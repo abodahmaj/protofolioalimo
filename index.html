@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحة المعلم التفاعلية - علي جبريل</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <style>
+        /* استخدام خط Cairo للصفحة */
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding-bottom: 90px;
+        }
+        /* تصميم الحاوية الرئيسية */
+        .main-container {
+             background-color: rgba(255, 255, 255, 0.9);
+             backdrop-filter: blur(10px);
+             border-radius: 1.5rem;
+             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        /* تصميم الأزرار (الروابط) في الشبكة */
+        .link-item {
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb; /* إضافة حد خفيف */
+            transition: all 0.3s ease-in-out; /* تبسيط الانتقال */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column; /* جعل الأيقونة فوق النص */
+            align-items: center; /* توسيط العناصر أفقيًا */
+            justify-content: center; /* توسيط العناصر رأسيًا */
+            text-align: center; /* توسيط النص */
+            min-height: 100px; /* ارتفاع أدنى للزر */
+            padding: 0.75rem; /* حشوة داخلية */
+        }
+         /* النص داخل الزر */
+        .link-item span {
+             font-size: 0.875rem; /* تصغير حجم الخط قليلاً */
+             margin-top: 0.5rem; /* مسافة بين الأيقونة والنص */
+             line-height: 1.3; /* تحسين قراءة النص القصير */
+        }
+
+        /* تأثيرات عند المرور على الأزرار */
+        .link-item:hover {
+            background-color: #eff6ff; /* أزرق فاتح جدًا */
+            transform: translateY(-3px); /* رفع بسيط للأعلى */
+            border-color: #93c5fd; /* تغيير لون الحد */
+            box-shadow: 0 6px 12px rgba(59, 130, 246, 0.15);
+        }
+         /* تأثير إضافي عند المرور: حركة للأيقونة */
+        .link-item:hover i.link-icon {
+            transform: scale(1.15); /* تكبير الأيقونة */
+            color: #1d4ed8;
+        }
+        /* تصميم أيقونات Font Awesome في الأزرار */
+        .link-item i.link-icon {
+            color: #3b82f6;
+            width: 28px; /* حجم الأيقونة */
+            height: 28px;
+            font-size: 1.5rem; /* حجم الأيقونة */
+            text-align: center;
+            transition: all 0.3s ease-in-out;
+            margin-bottom: 0.25rem; /* مسافة أسفل الأيقونة */
+        }
+        /* تصميم حاوية الصورة الشخصية */
+        .teacher-image-container {
+            border: 5px solid white;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            background-color: #e0f2fe;
+            display: inline-block;
+            vertical-align: middle;
+            overflow: hidden; /* مهم لمنع خروج الصورة من الدائرة */
+        }
+        /* تصميم الصورة الشخصية نفسها */
+        .teacher-image-container img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* يضمن تغطية الصورة للمساحة دون تشويه وقص الزوائد */
+        }
+         /* تصميم قسم التواصل */
+        .contact-section {
+            border-top: 1px solid #e5e7eb;
+            padding-top: 1.25rem;
+            margin-top: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .contact-section a {
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+        .contact-section a:hover {
+            transform: translateY(-3px) scale(1.05);
+        }
+         /* تصميم أيقونة التواصل المتبقية */
+         .contact-section i {
+             color: #3b82f6;
+             transition: all 0.3s ease-in-out;
+             font-size: 2.25rem;
+         }
+         .contact-section a:hover i {
+             transform: scale(1.1) rotate(-5deg);
+             color: #1d4ed8;
+         }
+
+         /* قسم عداد الزيارات الخارجي (Flag Counter) */
+         .visitor-counter-section {
+             text-align: center;
+             padding: 0.75rem 0.5rem;
+             background-color: rgba(227, 242, 253, 0.6);
+             border-radius: 0.5rem;
+             border-top: 1px solid #e5e7eb;
+             margin-top: auto;
+         }
+         .visitor-counter-section img {
+             border: none !important;
+             display: inline-block;
+             vertical-align: middle;
+         }
+         .visitor-counter-section a {
+             display: block;
+             margin-top: 4px;
+             font-size: 0.75rem;
+             color: #555;
+             text-decoration: none;
+         }
+         .visitor-counter-section a:hover {
+              text-decoration: underline;
+         }
+
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+    <div class="main-container w-full max-w-lg p-6 md:p-8 flex flex-col">
+        <div class="text-center mb-8">
+            <div class="teacher-image-container w-28 h-28 md:w-36 md:h-36 rounded-full mx-auto mb-5">
+                <img src="C:\Users\aboda\Desktop\ali.jpg"
+                     alt="صورة المعلم علي جبريل"
+                     onerror="this.onerror=null; this.src='https://placehold.co/144x144/e0f2fe/1e3a8a?text=علي+جبريل';">
+            </div>
+            <h1 class="text-2xl md:text-3xl font-bold text-gray-800">علي جبريل</h1>
+            <p class="text-gray-500 mt-1 text-sm md:text-base">مادة العلوم - مجمع الثقافة التعليمي</p>
+        </div>
+
+        <div id="links-container" class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-auto">
+
+             <a href="https://www.google.com" target="_blank" rel="noopener noreferrer" class="link-item rounded-lg">
+                <i class="fas fa-info-circle link-icon fa-solid"></i>
+                <span class="font-semibold text-gray-700">مقدمة</span>
+             </a>
+
+            <a href="https://www.google.com" target="_blank" rel="noopener noreferrer" class="link-item rounded-lg">
+                <i class="fas fa-scroll link-icon fa-solid"></i>
+                <span class="font-semibold text-gray-700">ميثاق مهنة التعليم</span>
+            </a>
+
+            <a href="https://www.google.com" target="_blank" rel="noopener noreferrer" class="link-item rounded-lg">
+                <i class="fas fa-bullseye link-icon fa-solid"></i>
+                <span class="font-semibold text-gray-700">الأهداف</span>
+            </a>
+
+            <a href="https://www.google.com" target="_blank" rel="noopener noreferrer" class="link-item rounded-lg">
+                <i class="fas fa-binoculars link-icon fa-solid"></i>
+                <span class="font-semibold text-gray-700">الرؤية والرسالة</span>
+            </a>
+
+            <a href="https://www.google.com" target="_blank" rel="noopener noreferrer" class="link-item rounded-lg">
+                <i class="fas fa-user-tie link-icon fa-solid"></i>
+                <span class="font-semibold text-gray-700">السيرة الذاتية</span>
+            </a>
+
+            <a href="https://www.google.com" target="_blank" rel="noopener noreferrer" class="link-item rounded-lg">
+                <i class="fas fa-chart-line link-icon fa-solid"></i>
+                <span class="font-semibold text-gray-700">النمو المهني</span>
+            </a>
+
+            <a href="https://www.google.com" target="_blank" rel="noopener noreferrer" class="link-item rounded-lg">
+                <i class="fas fa-award link-icon fa-solid"></i>
+                <span class="font-semibold text-gray-700">الإنجازات وشهادات الشكر</span>
+            </a>
+
+            <a href="https://www.google.com" target="_blank" rel="noopener noreferrer" class="link-item rounded-lg">
+                <i class="fas fa-file-alt link-icon fa-solid"></i>
+                <span class="font-semibold text-gray-700">تقارير الزيارات</span>
+            </a>
+
+             <a href="https://www.google.com" target="_blank" rel="noopener noreferrer" class="link-item rounded-lg">
+                <i class="fas fa-chalkboard-teacher link-icon fa-solid"></i>
+                <span class="font-semibold text-gray-700">التدريس</span>
+            </a>
+
+             <a href="https://www.google.com" target="_blank" rel="noopener noreferrer" class="link-item rounded-lg">
+                <i class="fas fa-flask link-icon fa-solid"></i>
+                <span class="font-semibold text-gray-700">مختبر العلوم</span>
+            </a>
+
+             <a href="https://www.google.com" target="_blank" rel="noopener noreferrer" class="link-item rounded-lg">
+                <i class="fas fa-palette link-icon fa-solid"></i>
+                <span class="font-semibold text-gray-700">أعمال الطلاب</span>
+            </a>
+
+             <a href="https://www.google.com" target="_blank" rel="noopener noreferrer" class="link-item rounded-lg">
+                <i class="fas fa-chart-pie link-icon fa-solid"></i>
+                <span class="font-semibold text-gray-700">تحليل الدرجات والخطط العلاجية</span>
+            </a>
+
+             <a href="https://www.google.com" target="_blank" rel="noopener noreferrer" class="link-item rounded-lg">
+                <i class="fas fa-lightbulb link-icon fa-solid"></i>
+                <span class="font-semibold text-gray-700">الإنتاج المعرفي</span>
+            </a>
+
+             <a href="https://www.google.com" target="_blank" rel="noopener noreferrer" class="link-item rounded-lg">
+                <i class="fas fa-users link-icon fa-solid"></i>
+                <span class="font-semibold text-gray-700">المساهمات</span>
+            </a>
+
+             <a href="https://www.google.com" target="_blank" rel="noopener noreferrer" class="link-item rounded-lg">
+                <i class="fas fa-laptop-house link-icon fa-solid"></i>
+                <span class="font-semibold text-gray-700">العمل عن بعد</span>
+            </a>
+
+             <a href="https://www.google.com" target="_blank" rel="noopener noreferrer" class="link-item rounded-lg">
+                <i class="fas fa-tasks link-icon fa-solid"></i>
+                <span class="font-semibold text-gray-700">التكليفات</span>
+            </a>
+
+             <a href="https://www.google.com" target="_blank" rel="noopener noreferrer" class="link-item rounded-lg">
+                <i class="fas fa-folder-open link-icon fa-solid"></i>
+                <span class="font-semibold text-gray-700">ملف الإنجاز وفق التنظيمات الجديدة</span>
+            </a>
+
+             <a href="https://www.google.com" target="_blank" rel="noopener noreferrer" class="link-item rounded-lg">
+                <i class="fas fa-clipboard-check link-icon fa-solid"></i>
+                <span class="font-semibold text-gray-700">عناصر تقييم الأداء الوظيفي للمعلم</span>
+            </a>
+        </div>
+
+         <div class="contact-section text-center">
+             <p class="text-gray-500 mb-4 text-sm md:text-base font-medium">للتواصل:</p>
+             <div class="flex justify-center space-x-8">
+                 <a href="https://wa.me/966550807306" target="_blank" title="واتساب">
+                     <i class="fa-brands fa-whatsapp"></i>
+                 </a>
+                 </div>
+         </div>
+
+         <div class="visitor-counter-section">
+              <a href="https://info.flagcounter.com/o3uP"><img src="https://s01.flagcounter.com/count2/o3uP/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_4/viewers_3/labels_0/pageviews_1/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+         </div>
+
+    </div>
+
+    <script>
+        console.log("تم تحميل صفحة المعلم التفاعلية بنجاح!");
+    </script>
+</body>
+</html>
